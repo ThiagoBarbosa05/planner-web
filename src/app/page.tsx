@@ -18,7 +18,7 @@ export default function Home() {
 
       <CreateTripForm />
 
-      <p className="text-center text-sm text-zinc-400 leading-5">
+      <p className="text-center text-sm max-w-[446px] text-zinc-400 leading-5">
         Ao planejar sua viagem pela plann.er você automaticamente concorda com
         nossos{' '}
         <a href="#" className="text-zinc-100 underline">
