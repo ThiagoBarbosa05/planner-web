@@ -14,6 +14,7 @@ export function ConfirmTrip() {
         type="button"
         onClick={() => setIsModalOpen(true)}
         variant="primary"
+        className="w-full"
       >
         Confirmar viagem
         <ArrowRight className="w-5 h-5" />
@@ -48,7 +49,7 @@ export function ConfirmTrip() {
           />
         </div>
 
-        <Button className="mt-3" variant="primary">
+        <Button className="mt-3 w-full" variant="primary">
           Confirmar criação da viagem.
         </Button>
         <Modal.Close closeModal={setIsModalOpen} />

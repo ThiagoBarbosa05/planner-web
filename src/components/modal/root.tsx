@@ -10,7 +10,7 @@ export function Root({ children, isOpen, className, ...props }: RootProps) {
   return (
     <div
       className={twMerge(
-        'absolute hidden backdrop-blur-sm flex-col px-5 items-center justify-center inset-0 bg-black/70',
+        'fixed hidden backdrop-blur-sm flex-col px-5 items-center justify-center inset-0 bg-black/70',
         isOpen && 'flex',
       )}
       {...props}
