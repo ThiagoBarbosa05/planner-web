@@ -3,9 +3,11 @@ import { CreateActivityForm } from './create-activity-form'
 
 export function Activity() {
   return (
-    <section>
+    <section className=" flex-1 ">
       <div className="flex items-center mb-6">
-        <h2 className="flex-1 text-2xl font-semibold">Atividades</h2>
+        <h2 className="flex-1 text-2xl font-semibold md:text-[2rem]">
+          Atividades
+        </h2>
         <CreateActivityForm />
       </div>
 

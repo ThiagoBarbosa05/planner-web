@@ -45,7 +45,7 @@ export function CreateLinkForm() {
           </div>
 
           <Button className="mt-1" variant="primary">
-            Salvar atividade
+            Salvar link
           </Button>
         </form>
         <Modal.Close closeModal={setIsModalOpen} />
