@@ -17,6 +17,7 @@ export function CreateActivityForm() {
         variant="primary"
       >
         <Plus className="w-5 h-5" />
+        <span className="hidden sm:block">Cadastrar atividade</span>
       </Button>
       <Modal.Root isOpen={isModalOpen}>
         <Modal.Header>

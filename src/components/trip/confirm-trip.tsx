@@ -35,22 +35,29 @@ export function ConfirmTrip() {
         <div className="bg-zinc-950 mt-5 mb-2 border border-zinc-800 rounded-lg py-[0.625rem] px-4 flex items-center gap-[0.625rem]">
           <User className="w-5 h-5 text-zinc-400" />
           <input
-            className="bg-transparent border-none outline-none"
+            className="bg-transparent w-full border-none outline-none"
             type="text"
+            name="ownerName"
             placeholder="Seu nome completo"
           />
         </div>
         <div className="bg-zinc-950 border border-zinc-800 rounded-lg py-[0.625rem] px-4 flex items-center gap-[0.625rem]">
           <Mail className="w-5 h-5 text-zinc-400" />
           <input
-            className="bg-transparent border-none outline-none"
+            className="bg-transparent w-full border-none outline-none"
             type="email"
+            name="ownerEmail"
             placeholder="Seu e-mail"
           />
         </div>
 
-        <Button className="mt-3 w-full" variant="primary">
-          Confirmar criação da viagem.
+        <Button
+          type="submit"
+          className="mt-3 w-full"
+          onClick={() => setIsModalOpen(false)}
+          variant="primary"
+        >
+          Confirmar criação da viagem
         </Button>
         <Modal.Close closeModal={setIsModalOpen} />
       </Modal.Root>

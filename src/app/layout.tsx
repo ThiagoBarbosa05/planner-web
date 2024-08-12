@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import 'react-day-picker/style.css'
+import { Toaster } from 'sonner'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,6 +19,13 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={inter.className}>
+        <Toaster
+          toastOptions={{
+            classNames: {
+              error: 'bg-red-400 border-red-800',
+            },
+          }}
+        />
         <div className="min-h-screen flex flex-col bg-zinc-950">{children}</div>
       </body>
     </html>

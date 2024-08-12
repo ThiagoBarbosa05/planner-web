@@ -29,7 +29,7 @@ function DatePicker({
       modifiersStyles={modifiersStyles}
       classNames={{
         day_button: 'rounded-xl',
-        disabled: 'text-zinc-500',
+        range_middle: 'bg-transparent',
       }}
       {...props}
     />
