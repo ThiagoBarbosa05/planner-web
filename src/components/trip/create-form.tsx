@@ -14,6 +14,7 @@ import { ptBR } from 'date-fns/locale'
 import { InviteParticipantsForm } from './invite-participants-form'
 import { EMPTY_FORM_STATE } from '@/actions/error-handler'
 import { toast } from 'sonner'
+import { Loading } from './loading'
 
 export function CreateTripForm() {
   const [isOpenDatePicker, setIsOpenDatePicker] = useState(false)
@@ -144,7 +145,7 @@ export function CreateTripForm() {
         setEmailsToInvite={setEmailsToInvite}
         emails={emailsToInvite}
       />
-      {/* <ConfirmTrip /> */}
+      <Loading />
     </form>
   )
 }

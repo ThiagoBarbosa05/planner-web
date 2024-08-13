@@ -3,6 +3,8 @@
 import { z } from 'zod'
 import { ActionsResponse, FormState } from './error-handler'
 import { isEqual } from 'date-fns'
+import { redirect } from 'next/navigation'
+import { revalidateTag } from 'next/cache'
 
 export type TripDuration = {
   from: Date
@@ -33,6 +35,8 @@ export async function createTrip(
   formState: FormState,
   formData: FormData,
 ) {
+  let tripIdFromResponse: string
+
   try {
     const tripStartsAt = duration.from
     const tripEndsAt = duration.to
@@ -54,7 +58,7 @@ export async function createTrip(
       emailsToInvite,
     })
 
-    const res = await fetch('http://localhost:8080/trip', {
+    const response = await fetch('http://localhost:8080/trip', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -65,18 +69,22 @@ export async function createTrip(
         emailsToInvite: trip.emailsToInvite,
         destination: trip.destination,
         isConfirmed: true,
-        startsAt: duration.from.toISOString(), // '2024-08-30T21:51:54.7342Z'
-        endsAt: duration.to.toISOString(), // "2024-08-30T21:51:54.7342Z"
+        startsAt: duration.from.toISOString(),
+        endsAt: duration.to.toISOString(),
       }),
     })
-    console.log(duration)
-    console.log(await res.json())
+
+    if (!response.ok) {
+      throw new Error('Ocorreu um erro ao tentar criar a viagem.')
+    }
+
+    const tripId = await response.json()
+
+    tripIdFromResponse = tripId.id
   } catch (err) {
     return ActionsResponse.onError({ err, status: 'ERROR' })
   }
 
-  return ActionsResponse.onSuccess({
-    message: 'Viagem criada com sucesso!',
-    status: 'SUCCESS',
-  })
+  revalidateTag(`/trip/${tripIdFromResponse}`)
+  redirect(`/trip/${tripIdFromResponse}`)
 }
